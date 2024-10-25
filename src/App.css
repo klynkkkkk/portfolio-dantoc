@@ -1,0 +1,520 @@
+@media screen and (min-width: 1280px) {
+    body {
+        margin: 0;
+        background-color: #000;
+        color: #eee;
+        font-family: Arial;
+        font-size: 12px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        width: 1140px;
+        max-width: 80%;
+        margin: auto;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+    }
+
+    header a {
+        color: #eee;
+        margin-right: 40px;
+    }
+
+    /* carousel */
+    .carousel {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel .list .item {
+        background: url('./assets/image/bg.jpeg');
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0 0 0 0;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .carousel .list .item .img-container {
+        flex: 1;
+        padding: 40px;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel .list .item .content {
+        flex: 1;
+        padding: 40px;
+        box-sizing: border-box;
+        color: #6B7280;
+        margin-top: -160px;
+    }
+
+    .carousel .list .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+
+    }
+
+    .carousel .list .item .author {
+        font-weight: bold;
+        letter-spacing: 4px;
+    }
+
+    /* thumbail */
+    .thumbnail {
+        position: absolute;
+        bottom: 50px;
+        left: 40px;
+        max-width: 500px;
+        overflow: hidden;
+        z-index: 100;
+        display: flex;
+        gap: 20px;
+    }
+
+    .thumbnail .item {
+        width: 150px;
+        height: 220px;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .thumbnail .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .thumbnail .item .content {
+        color: #fff;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .thumbnail .item .content .title {
+        font-weight: 500;
+    }
+
+    .thumbnail .item .content .description {
+        font-weight: 300;
+    }
+
+    /* arrows */
+    .arrows {
+        position: absolute;
+        bottom: 50px;
+        left: 550px;
+        z-index: 100;
+        height: 220px;
+        gap: 10px;
+    }
+
+    .arrows button {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-color: #fff;
+        border: none;
+        transition: .5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrows button:hover {
+        background-color: #FFFFFF52;
+        color: #000;
+    }
+
+    /* animation */
+    .carousel .list .item:nth-child(1) {
+        z-index: 1;
+    }
+
+    /* animation text in first item */
+
+    .carousel .list .item:nth-child(1) .content .author,
+    .carousel .list .item:nth-child(1) .content .title,
+    .carousel .list .item:nth-child(1) .content .topic,
+    .carousel .list .item:nth-child(1) .content .des,
+    .carousel .list .item:nth-child(1) .content .buttons {
+        transform: translateY(50px);
+        filter: blur(20px);
+        opacity: 0;
+        animation: showContent .5s 1s linear 1 forwards;
+    }
+
+    @keyframes showContent {
+        to {
+            transform: translateY(0px);
+            filter: blur(0px);
+            opacity: 1;
+        }
+    }
+
+    .carousel .list .item:nth-child(1) .content .title {
+        animation-delay: 1.2s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .topic {
+        animation-delay: 1.4s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .des {
+        animation-delay: 1.6s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .buttons {
+        animation-delay: 1.8s !important;
+    }
+
+    /* create animation when next click */
+    .carousel.next .list .item:nth-child(1) img {
+        width: 150px;
+        height: 220px;
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        animation: showImage .5s linear 1 forwards;
+    }
+
+    @keyframes showImage {
+        to {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .carousel.next .thumbnail .item:nth-last-child(1) {
+        overflow: hidden;
+        animation: showThumbnail .5s linear 1 forwards;
+    }
+
+    .carousel.prev .list .item img {
+        z-index: 100;
+    }
+
+    @keyframes showThumbnail {
+        from {
+            width: 0;
+            opacity: 0;
+        }
+    }
+
+    .carousel.next .thumbnail {
+        animation: effectNext .5s linear 1 forwards;
+    }
+
+    @keyframes effectNext {
+        from {
+            transform: translateX(150px);
+        }
+    }
+
+    /* running time */
+
+    .carousel .time {
+        position: absolute;
+        z-index: 1000;
+        width: 0%;
+        height: 3px;
+        background-color: #f1683a;
+        left: 0;
+        top: 0;
+    }
+
+    .carousel.next .time,
+    .carousel.prev .time {
+        animation: runningTime 3s linear 1 forwards;
+    }
+
+    @keyframes runningTime {
+        from {
+            width: 100%
+        }
+
+        to {
+            width: 0
+        }
+    }
+
+
+}
+
+@media screen and (max-width:1280px) {
+    body {
+        margin: 0;
+        color: #eee;
+    }
+
+    /* carousel */
+    .carousel {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel .list .item {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0 0 0 0;
+    }
+
+    .carousel .list .item .img-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .carousel .list .item .img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .carousel .list .item .content {
+        position: absolute;
+        top: 40%;
+        width: 1140px;
+        max-width: 100%;
+        left: 40px;
+        transform: translateY(-50%);
+        padding-right: 20%;
+        box-sizing: border-box;
+        color: #fff;
+    }
+
+    .carousel .list .item .author {
+        font-weight: bold;
+        letter-spacing: 10px;
+    }
+
+
+    .carousel .list .item .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 130px);
+        grid-template-rows: 40px;
+        gap: 5px;
+        margin-top: 20px;
+    }
+
+    .carousel .list .item .buttons button {
+        border: none;
+        background-color: #eee;
+        letter-spacing: 3px;
+        font-family: Arial;
+        font-weight: 500;
+    }
+
+    .carousel .list .item .buttons button:nth-child(2) {
+        background-color: transparent;
+        border: 1px solid #fff;
+        color: #eee;
+    }
+
+    /* thumbail */
+    .thumbnail {
+        position: absolute;
+        bottom: 50px;
+        left: 40px;
+        max-width: 500px;
+        overflow: hidden;
+        z-index: 100;
+        display: flex;
+        gap: 20px;
+    }
+
+    .thumbnail .item {
+        width: 150px;
+        height: 220px;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .thumbnail .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .thumbnail .item .content {
+        color: #fff;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .thumbnail .item .content .title {
+        font-weight: 500;
+    }
+
+    .thumbnail .item .content .description {
+        font-weight: 300;
+    }
+
+    /* arrows */
+    .arrows {
+        position: absolute;
+        bottom: 50px;
+        left: 550px;
+        z-index: 100;
+        height: 220px;
+        gap: 10px;
+    }
+
+    .arrows button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #eee4;
+        border: none;
+        color: #fff;
+        font-family: monospace;
+        font-weight: bold;
+        transition: .5s;
+    }
+
+    .arrows button:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* animation */
+    .carousel .list .item:nth-child(1) {
+        z-index: 1;
+    }
+
+    /* animation text in first item */
+
+    .carousel .list .item:nth-child(1) .content .author,
+    .carousel .list .item:nth-child(1) .content .title,
+    .carousel .list .item:nth-child(1) .content .topic,
+    .carousel .list .item:nth-child(1) .content .des,
+    .carousel .list .item:nth-child(1) .content .buttons {
+        transform: translateY(50px);
+        filter: blur(20px);
+        opacity: 0;
+        animation: showContent .5s 1s linear 1 forwards;
+    }
+
+    @keyframes showContent {
+        to {
+            transform: translateY(0px);
+            filter: blur(0px);
+            opacity: 1;
+        }
+    }
+
+    .carousel .list .item:nth-child(1) .content .title {
+        animation-delay: 1.2s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .topic {
+        animation-delay: 1.4s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .des {
+        animation-delay: 1.6s !important;
+    }
+
+    .carousel .list .item:nth-child(1) .content .buttons {
+        animation-delay: 1.8s !important;
+    }
+
+    /* create animation when next click */
+    .carousel.next .list .item:nth-child(1) img {
+        width: 150px;
+        height: 220px;
+        position: absolute;
+        bottom: 50px;
+        left: 40px;
+        border-radius: 30px;
+        animation: showImage .5s linear 1 forwards;
+    }
+
+    @keyframes showImage {
+        to {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+    }
+
+    .carousel.next .thumbnail .item:nth-last-child(1) {
+        overflow: hidden;
+        animation: showThumbnail .5s linear 1 forwards;
+    }
+
+    .carousel.prev .list .item img {
+        z-index: 100;
+    }
+
+    @keyframes showThumbnail {
+        from {
+            width: 0;
+            opacity: 0;
+        }
+    }
+
+    .carousel.next .thumbnail {
+        animation: effectNext .5s linear 1 forwards;
+    }
+
+    @keyframes effectNext {
+        from {
+            transform: translateX(150px);
+        }
+    }
+
+    /* running time */
+
+    .carousel .time {
+        position: absolute;
+        z-index: 1000;
+        width: 0%;
+        height: 3px;
+        background-color: #f1683a;
+        left: 0;
+        top: 0;
+    }
+
+    .carousel.next .time,
+    .carousel.prev .time {
+        animation: runningTime 3s linear 1 forwards;
+    }
+
+    @keyframes runningTime {
+        from {
+            width: 100%
+        }
+
+        to {
+            width: 0
+        }
+    }
+}
